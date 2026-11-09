@@ -277,18 +277,19 @@
       fill: #ffffff;
     }
 
-        /* --- Über Mich Sektion --- */
+         /* --- Über Mich Sektion (Dark & Light optimiert) --- */
     .about-section {
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 1.5rem 6rem;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
     
     .about-divider {
       width: 100%;
       height: 1px;
-      background-color: var(--border-color, rgba(255, 255, 255, 0.1));
+      background-color: rgba(255, 255, 255, 0.12);
       margin-bottom: 4rem;
     }
     
@@ -306,7 +307,7 @@
       }
     }
     
-    /* 16:9 Responsive Video */
+    /* Video Frame */
     .about-video-wrapper {
       width: 100%;
     }
@@ -314,11 +315,11 @@
     .about-video-frame {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Verhältnis */
+      padding-bottom: 56.25%;
       background-color: #000;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
     
     .about-video-frame iframe {
@@ -330,13 +331,13 @@
       border: 0;
     }
     
-    /* Steckbrief Typografie */
+    /* Typografie: Dark Mode (Default) */
     .about-subtitle {
       display: block;
       font-size: 0.75rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--text-muted, #737373);
+      color: #888888;
       margin-bottom: 0.5rem;
     }
     
@@ -344,46 +345,47 @@
       font-size: 1.75rem;
       font-weight: 300;
       letter-spacing: 0.15em;
-      color: var(--text-main, #ffffff);
+      color: #f5f5f5;
       margin: 0 0 1.5rem 0;
     }
     
     .about-bio {
       font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--text-muted, #a3a3a3);
-      margin-bottom: 2rem;
+      line-height: 1.75;
+      color: #aaaaaa;
+      margin-bottom: 2.5rem;
       font-weight: 300;
     }
     
-    /* Steckbrief Liste */
+    /* Steckbrief Liste: Dark Mode (Default) */
     .about-details {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.1rem;
     }
     
     .about-details li {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.75rem;
       font-size: 0.85rem;
     }
     
     .detail-label {
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted, #737373);
+      letter-spacing: 0.12em;
+      color: #777777;
       font-size: 0.75rem;
+      font-weight: 500;
     }
     
     .detail-value {
-      color: var(--text-main, #e5e5e5);
+      color: #e5e5e5;
       font-weight: 300;
       text-align: right;
     }
@@ -397,6 +399,59 @@
     
     .detail-link:hover {
       opacity: 0.6;
+    }
+    
+    /* =========================================
+       LIGHT MODE OVERRIDES
+       Greift bei .light, .light-mode oder [data-theme="light"]
+       ========================================= */
+    body.light-mode .about-divider,
+    html.light .about-divider,
+    [data-theme="light"] .about-divider {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-mode .about-video-frame,
+    html.light .about-video-frame,
+    [data-theme="light"] .about-video-frame {
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    
+    body.light-mode .about-subtitle,
+    html.light .about-subtitle,
+    [data-theme="light"] .about-subtitle {
+      color: #666666;
+    }
+    
+    body.light-mode .about-title,
+    html.light .about-title,
+    [data-theme="light"] .about-title {
+      color: #000000;
+    }
+    
+    body.light-mode .about-bio,
+    html.light .about-bio,
+    [data-theme="light"] .about-bio {
+      color: #333333;
+    }
+    
+    body.light-mode .about-details li,
+    html.light .about-details li,
+    [data-theme="light"] .about-details li {
+      border-bottom-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-mode .detail-label,
+    html.light .detail-label,
+    [data-theme="light"] .detail-label {
+      color: #666666;
+    }
+    
+    body.light-mode .detail-value,
+    html.light .detail-value,
+    [data-theme="light"] .detail-value {
+      color: #000000;
+      font-weight: 400;
     }
   </style>
 </head>
