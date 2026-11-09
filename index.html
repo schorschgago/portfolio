@@ -213,6 +213,39 @@
       color: #737373;
     }
 
+    /* Language Toggle in Top Navigation */
+    .lang-toggle-btn {
+      user-select: none;
+    }
+    body.light-mode .lang-toggle-btn {
+      border-color: rgba(0, 0, 0, 0.15);
+      color: #525252;
+    }
+    body.light-mode .lang-toggle-btn:hover {
+      border-color: #000000;
+      color: #000000;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    body.light-mode .lang-separator {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+    body.light-mode .lang-active {
+      color: #000000 !important;
+      font-weight: 600 !important;
+    }
+    body.light-mode .lang-inactive {
+      color: #737373 !important;
+      font-weight: 400 !important;
+    }
+    body:not(.light-mode) .lang-active {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+    body:not(.light-mode) .lang-inactive {
+      color: #71717a !important;
+      font-weight: 400 !important;
+    }
+
     /* Sun & Moon Mountain Animation Toggle - Pure Black & White */
     .theme-toggle-btn {
       position: fixed;
@@ -505,6 +538,23 @@
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
           Design
         </button>
+
+        <!-- Divider -->
+        <span class="hidden sm:inline-block w-px h-4 bg-white/15 my-auto mx-0.5 lang-separator" aria-hidden="true"></span>
+
+        <!-- Language Switcher Button -->
+        <button type="button" 
+                id="lang-toggle-btn" 
+                class="lang-toggle-btn px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04] inline-flex items-center gap-1.5 cursor-pointer" 
+                aria-label="Sprache zu Englisch wechseln" 
+                title="Sprache wechseln (DE / EN)">
+          <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+          </svg>
+          <span id="lang-indicator-de" class="transition-colors lang-active">DE</span>
+          <span class="text-zinc-600 select-none">/</span>
+          <span id="lang-indicator-en" class="transition-colors lang-inactive">EN</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -583,7 +633,7 @@
         <!-- Centered Home Title Overlay (Balken-Fix durch optimierten Verlauf) -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Animals</span>
-          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+          <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
@@ -687,7 +737,7 @@
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Aviation</span>
-          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+          <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
@@ -708,7 +758,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
-            <span>Keine Metadaten verfügbar</span>
+            <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -724,7 +774,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
-            <span>Keine Metadaten verfügbar</span>
+            <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -855,7 +905,7 @@
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Environments</span>
-          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+          <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
@@ -892,7 +942,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
-            <span>Keine Metadaten verfügbar</span>
+            <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -1023,7 +1073,7 @@
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Food</span>
-          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+          <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
@@ -1166,6 +1216,9 @@
       <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
                data-category="design"
                data-is-cover="true"
+               data-camera-pages="true"
+               data-title-de="Design · Magazin (5 Seiten)"
+               data-title-en="Design · Magazine (5 Pages)"
                data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Magazin (5 Seiten)"
                data-src="images/design/magazin-p1.jpg"
                data-pages='["images/design/magazin-p1.jpg","images/design/magazin-p2.jpg","images/design/magazin-p3.jpg","images/design/magazin-p4.jpg","images/design/magazin-p5.jpg"]'
@@ -1177,10 +1230,10 @@
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Design</span>
-          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+          <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design · 5 Seiten</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400" data-pages-count="5">Design · 5 Seiten</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>Magazin M273</span>
           </div>
@@ -1228,6 +1281,9 @@
       <!-- Konzept SHIFT Teil 3 M275 -->
       <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
                data-category="design"
+               data-camera-pages="true"
+               data-title-de="Design · Konzept SHIFT (11 Seiten)"
+               data-title-en="Design · Concept SHIFT (11 Pages)"
                data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Konzept SHIFT (11 Seiten)"
                data-src="images/design/konzept-shift-p1.jpg"
                data-pages='["images/design/konzept-shift-p1.jpg","images/design/konzept-shift-p2.jpg","images/design/konzept-shift-p3.jpg","images/design/konzept-shift-p4.jpg","images/design/konzept-shift-p5.jpg","images/design/konzept-shift-p6.jpg","images/design/konzept-shift-p7.jpg","images/design/konzept-shift-p8.jpg","images/design/konzept-shift-p9.jpg","images/design/konzept-shift-p10.jpg","images/design/konzept-shift-p11.jpg"]'
@@ -1237,7 +1293,7 @@
                alt="Konzept SHIFT M275" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design · 11 Seiten</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400" data-pages-count="11">Design · 11 Seiten</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>Konzept SHIFT Teil 3</span>
           </div>
@@ -1270,17 +1326,17 @@
         <span class="about-subtitle">ABOUT</span>
         <h2 class="about-title">LEO STÄGER</h2>
         
-        <p class="about-bio">
+        <p class="about-bio" id="about-bio">
           Lernender Mediamatiker mit viel Interesse an Fotografie & Videografie.
         </p>
   
         <ul class="about-details">
           <li>
-            <span class="detail-label">Standort</span>
-            <span class="detail-value">Schweiz</span>
+            <span class="detail-label" id="about-location-label">Standort</span>
+            <span class="detail-value" id="about-location-value">Schweiz</span>
           </li>
           <li>
-            <span class="detail-label">Galerien</span>
+            <span class="detail-label" id="about-galleries-label">Galerien</span>
             <span class="detail-value">Animals, Aviation, Environments, Food, Design</span>
           </li>
           <li>
@@ -1288,7 +1344,7 @@
             <span class="detail-value">Sony ILCE-7M3</span>
           </li>
           <li>
-            <span class="detail-label">Kontakt</span>
+            <span class="detail-label" id="about-contact-label">Kontakt</span>
             <span class="detail-value"><a href="mailto:leo.staeger@bluewin.ch" class="detail-link">leo.staeger@bluewin.ch</a></span>
           </li>
         </ul>
@@ -1430,6 +1486,7 @@
       const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
       const activeCategoryLabel = document.getElementById('active-category-label');
       const itemCounter = document.getElementById('item-counter');
+      const aboutSection = document.getElementById('about-section');
 
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightbox-img');
@@ -1450,15 +1507,188 @@
       let currentItemPages = [];
       let currentPageIndex = 0;
 
-      // Category display names dictionary
-      const categoryNames = {
-        'home': 'Home — Übersicht',
-        'animals': 'Animals Galerie',
-        'aviation': 'Aviation Galerie',
-        'environments': 'Environments Galerie',
-        'food': 'Food Galerie',
-        'design': 'Design Galerie'
+      // ----------------------------------------------------
+      // Language (DE / EN) Switching Logic
+      // ----------------------------------------------------
+      const langToggleBtn = document.getElementById('lang-toggle-btn');
+      const langIndicatorDe = document.getElementById('lang-indicator-de');
+      const langIndicatorEn = document.getElementById('lang-indicator-en');
+      let currentLang = localStorage.getItem('portfolio_lang') || 'de';
+
+      const i18n = {
+        de: {
+          brandTitle: 'Zurück zur Startseite',
+          activeCategories: {
+            'home': 'Home — Übersicht',
+            'animals': 'Animals Galerie',
+            'aviation': 'Aviation Galerie',
+            'environments': 'Environments Galerie',
+            'food': 'Food Galerie',
+            'design': 'Design Galerie'
+          },
+          openGallery: 'Galerie öffnen &rarr;',
+          categoriesCount: (n) => `${n} Kategorien`,
+          photosCount: (n) => `${n} Fotos`,
+          aboutBio: 'Lernender Mediamatiker mit viel Interesse an Fotografie & Videografie.',
+          aboutLocationLabel: 'Standort',
+          aboutLocationValue: 'Schweiz',
+          aboutGalleriesLabel: 'Galerien',
+          aboutContactLabel: 'Kontakt',
+          noMetadata: 'Keine Metadaten verfügbar',
+          pageIndicator: (cur, tot) => `Seite ${cur} / ${tot}`,
+          prevPage: 'Vorherige Seite',
+          nextPage: 'Nächste Seite',
+          openPdf: 'Original-PDF öffnen',
+          closeLightbox: 'Schließen',
+          prevImage: 'Vorheriges Bild',
+          nextImage: 'Nächstes Bild',
+          langToggleAria: 'Sprache zu Englisch wechseln',
+          langToggleTitle: 'Sprache wechseln (DE / EN)',
+          designPages: (n) => `Design · ${n} Seiten`
+        },
+        en: {
+          brandTitle: 'Back to Home',
+          activeCategories: {
+            'home': 'Home — Overview',
+            'animals': 'Animals Gallery',
+            'aviation': 'Aviation Gallery',
+            'environments': 'Environments Gallery',
+            'food': 'Food Gallery',
+            'design': 'Design Gallery'
+          },
+          openGallery: 'Open gallery &rarr;',
+          categoriesCount: (n) => `${n} Categories`,
+          photosCount: (n) => `${n} Photos`,
+          aboutBio: 'Mediamatics apprentice with a strong passion for photography & videography.',
+          aboutLocationLabel: 'Location',
+          aboutLocationValue: 'Switzerland',
+          aboutGalleriesLabel: 'Galleries',
+          aboutContactLabel: 'Contact',
+          noMetadata: 'No metadata available',
+          pageIndicator: (cur, tot) => `Page ${cur} / ${tot}`,
+          prevPage: 'Previous page',
+          nextPage: 'Next page',
+          openPdf: 'Open original PDF',
+          closeLightbox: 'Close Lightbox',
+          prevImage: 'Previous image',
+          nextImage: 'Next image',
+          langToggleAria: 'Switch language to German',
+          langToggleTitle: 'Switch language (DE / EN)',
+          designPages: (n) => `Design · ${n} Pages`
+        }
       };
+
+      function updateLanguageUI() {
+        const isDe = (currentLang === 'de');
+        const t = i18n[currentLang];
+        document.documentElement.lang = currentLang;
+
+        if (langIndicatorDe && langIndicatorEn) {
+          if (isDe) {
+            langIndicatorDe.className = 'transition-colors lang-active';
+            langIndicatorEn.className = 'transition-colors lang-inactive';
+          } else {
+            langIndicatorDe.className = 'transition-colors lang-inactive';
+            langIndicatorEn.className = 'transition-colors lang-active';
+          }
+        }
+
+        if (langToggleBtn) {
+          langToggleBtn.setAttribute('aria-label', t.langToggleAria);
+          langToggleBtn.title = t.langToggleTitle;
+        }
+
+        if (brandHomeLink) {
+          brandHomeLink.title = t.brandTitle;
+        }
+
+        // Cover button labels
+        document.querySelectorAll('.cover-open-gallery').forEach(el => {
+          el.innerHTML = t.openGallery;
+        });
+
+        // About section
+        const aboutBio = document.getElementById('about-bio');
+        if (aboutBio) aboutBio.textContent = t.aboutBio;
+
+        const aboutLocLabel = document.getElementById('about-location-label');
+        if (aboutLocLabel) aboutLocLabel.textContent = t.aboutLocationLabel;
+
+        const aboutLocVal = document.getElementById('about-location-value');
+        if (aboutLocVal) aboutLocVal.textContent = t.aboutLocationValue;
+
+        const aboutGalLabel = document.getElementById('about-galleries-label');
+        if (aboutGalLabel) aboutGalLabel.textContent = t.aboutGalleriesLabel;
+
+        const aboutContactLabel = document.getElementById('about-contact-label');
+        if (aboutContactLabel) aboutContactLabel.textContent = t.aboutContactLabel;
+
+        // Design cards pages count
+        document.querySelectorAll('[data-pages-count]').forEach(el => {
+          const count = el.getAttribute('data-pages-count');
+          el.textContent = t.designPages(count);
+        });
+
+        // Design cards camera metadata attributes
+        document.querySelectorAll('[data-camera-pages]').forEach(el => {
+          const title = isDe ? el.getAttribute('data-title-de') : el.getAttribute('data-title-en');
+          if (title) el.setAttribute('data-camera', title);
+        });
+
+        // Unavailable metadata spans
+        document.querySelectorAll('.meta-unavailable').forEach(el => {
+          el.textContent = t.noMetadata;
+        });
+
+        // Lightbox buttons
+        if (lightboxPagePrev) lightboxPagePrev.title = t.prevPage;
+        if (lightboxPageNext) lightboxPageNext.title = t.nextPage;
+        if (lightboxPdfLink) lightboxPdfLink.title = t.openPdf;
+        if (lightboxClose) lightboxClose.setAttribute('aria-label', t.closeLightbox);
+        if (lightboxPrev) lightboxPrev.setAttribute('aria-label', t.prevImage);
+        if (lightboxNext) lightboxNext.setAttribute('aria-label', t.nextImage);
+
+        // Lightbox live indicators if open
+        if (lightbox && lightbox.classList.contains('is-open')) {
+          if (currentItemPages.length > 1 && lightboxPageIndicator) {
+            lightboxPageIndicator.textContent = t.pageIndicator(currentPageIndex + 1, currentItemPages.length);
+          }
+          if (lightboxExif && (!lightboxExif.textContent || lightboxExif.textContent === i18n.de.noMetadata || lightboxExif.textContent === i18n.en.noMetadata)) {
+            lightboxExif.textContent = t.noMetadata;
+          }
+        }
+
+        // Header labels
+        if (activeCategoryLabel) {
+          activeCategoryLabel.textContent = t.activeCategories[currentFilter] || 'Portfolio';
+        }
+        if (itemCounter) {
+          itemCounter.textContent = currentFilter === 'home'
+            ? t.categoriesCount(currentFilteredItems.length)
+            : t.photosCount(currentFilteredItems.length);
+        }
+      }
+
+      function switchLanguage(targetLang) {
+        currentLang = targetLang || (currentLang === 'de' ? 'en' : 'de');
+        try {
+          localStorage.setItem('portfolio_lang', currentLang);
+        } catch(e) {}
+        updateLanguageUI();
+      }
+
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', (e) => {
+          const target = e.target;
+          if (target && target.id === 'lang-indicator-de') {
+            switchLanguage('de');
+          } else if (target && target.id === 'lang-indicator-en') {
+            switchLanguage('en');
+          } else {
+            switchLanguage();
+          }
+        });
+      }
 
       // ----------------------------------------------------
       // Dark / Light Mode Switcher Logic
@@ -1487,6 +1717,7 @@
           isLightMode = !isLightMode;
           document.body.classList.toggle('light-mode', isLightMode);
           updateThemeButtons();
+          updateLanguageUI();
         });
       }
 
@@ -1559,10 +1790,22 @@
         });
 
         // Update Header Labels
-        activeCategoryLabel.textContent = categoryNames[filterValue] || 'Portfolio';
+        const t = i18n[currentLang];
+        activeCategoryLabel.textContent = t.activeCategories[filterValue] || 'Portfolio';
         itemCounter.textContent = filterValue === 'home' 
-          ? `${currentFilteredItems.length} Kategorien` 
-          : `${currentFilteredItems.length} Fotos`;
+          ? t.categoriesCount(currentFilteredItems.length) 
+          : t.photosCount(currentFilteredItems.length);
+
+        // About section is only visible on the starting page (home)
+        if (aboutSection) {
+          if (filterValue === 'home') {
+            aboutSection.classList.remove('hidden');
+            aboutSection.style.display = '';
+          } else {
+            aboutSection.classList.add('hidden');
+            aboutSection.style.display = 'none';
+          }
+        }
       }
 
       filterBtns.forEach(btn => {
@@ -1605,7 +1848,7 @@
         currentPageIndex = (pageIdx + currentItemPages.length) % currentItemPages.length;
         lightboxImg.src = currentItemPages[currentPageIndex];
         if (lightboxPageIndicator) {
-          lightboxPageIndicator.textContent = `Seite ${currentPageIndex + 1} / ${currentItemPages.length}`;
+          lightboxPageIndicator.textContent = i18n[currentLang].pageIndicator(currentPageIndex + 1, currentItemPages.length);
         }
       }
 
@@ -1645,7 +1888,7 @@
         if (focal && focal !== '—') exifSpecs.push(focal);
         if (iso && iso !== '—') exifSpecs.push(iso);
 
-        lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : 'Keine Metadaten verfügbar';
+        lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : i18n[currentLang].noMetadata;
 
         // Multi-page pager visibility
         if (currentItemPages.length > 1 || pdfPath) {
@@ -1656,7 +1899,7 @@
             lightboxPagePrev.style.display = 'inline-flex';
             lightboxPageNext.style.display = 'inline-flex';
             lightboxPageIndicator.style.display = 'inline-block';
-            lightboxPageIndicator.textContent = `Seite 1 / ${currentItemPages.length}`;
+            lightboxPageIndicator.textContent = i18n[currentLang].pageIndicator(1, currentItemPages.length);
           } else {
             lightboxPagePrev.style.display = 'none';
             lightboxPageNext.style.display = 'none';
@@ -1785,6 +2028,7 @@
 
       // Initialize default view to "Home" (1 Cover per Category)
       applyFilter('home');
+      updateLanguageUI();
     });
   </script>
 </body>
