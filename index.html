@@ -276,6 +276,128 @@
     body.light-mode .mountain-base {
       fill: #ffffff;
     }
+
+        /* --- Über Mich Sektion --- */
+    .about-section {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+    }
+    
+    .about-divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--border-color, rgba(255, 255, 255, 0.1));
+      margin-bottom: 4rem;
+    }
+    
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    
+    @media (min-width: 900px) {
+      .about-container {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 4rem;
+      }
+    }
+    
+    /* 16:9 Responsive Video */
+    .about-video-wrapper {
+      width: 100%;
+    }
+    
+    .about-video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Verhältnis */
+      background-color: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    }
+    
+    .about-video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* Steckbrief Typografie */
+    .about-subtitle {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted, #737373);
+      margin-bottom: 0.5rem;
+    }
+    
+    .about-title {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--text-main, #ffffff);
+      margin: 0 0 1.5rem 0;
+    }
+    
+    .about-bio {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted, #a3a3a3);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    
+    /* Steckbrief Liste */
+    .about-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .about-details li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+      padding-bottom: 0.6rem;
+      font-size: 0.85rem;
+    }
+    
+    .detail-label {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted, #737373);
+      font-size: 0.75rem;
+    }
+    
+    .detail-value {
+      color: var(--text-main, #e5e5e5);
+      font-weight: 300;
+      text-align: right;
+    }
+    
+    .detail-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s ease;
+    }
+    
+    .detail-link:hover {
+      opacity: 0.6;
+    }
   </style>
 </head>
 
@@ -975,6 +1097,55 @@
 
     </div>
   </main>
+
+    <!-- Über Mich Sektion -->
+  <section id="about-section" class="about-section">
+    <div class="about-divider"></div>
+  
+    <div class="about-container">
+      <!-- Video Spalte -->
+      <div class="about-video-wrapper">
+        <div class="about-video-frame">
+          <iframe 
+            src="VIDEO_EMBED_URL" 
+            title="About Video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+  
+      <!-- Steckbrief Spalte -->
+      <div class="about-content">
+        <span class="about-subtitle">ÜBER MICH</span>
+        <h2 class="about-title">LEO STÄGER</h2>
+        
+        <p class="about-bio">
+          Fotograf mit Fokus auf Tier-, Luftfahrt- und Umweltaufnahmen. Die Kombination aus technischer Präzision und dem Festhalten flüchtiger Lichtstimmungen treibt meine visuelle Arbeit an.
+        </p>
+  
+        <ul class="about-details">
+          <li>
+            <span class="detail-label">Standort</span>
+            <span class="detail-value">Schweiz</span>
+          </li>
+          <li>
+            <span class="detail-label">Fokus</span>
+            <span class="detail-value">Animals, Aviation, Environments, Food</span>
+          </li>
+          <li>
+            <span class="detail-label">Gear</span>
+            <span class="detail-value">Sony ILCE-7M3 &amp; Nikon Z 7 II</span>
+          </li>
+          <li>
+            <span class="detail-label">Kontakt</span>
+            <span class="detail-value"><a href="mailto:kontakt@example.com" class="detail-link">kontakt@example.com</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <!-- Minimal Footer -->
   <footer class="mt-auto border-t border-white/[0.08] bg-[#000000] py-8 text-center text-xs tracking-widest text-neutral-500 uppercase">
