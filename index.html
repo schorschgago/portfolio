@@ -20,11 +20,11 @@
         extend: {
           colors: {
             brand: {
-              bg: '#0c0d12',
-              card: '#13151c',
-              border: 'rgba(255, 255, 255, 0.08)',
-              accent: '#f3f4f6',
-              muted: '#8b8e9b'
+              bg: '#000000',
+              card: '#0d0d0d',
+              border: 'rgba(255, 255, 255, 0.1)',
+              accent: '#ffffff',
+              muted: '#737373'
             }
           },
           fontFamily: {
@@ -42,14 +42,14 @@
       width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #0c0d12;
+      background: #000000;
     }
     ::-webkit-scrollbar-thumb {
-      background: #232634;
+      background: #262626;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #3b3f54;
+      background: #404040;
     }
 
     /* CSS Columns for lightweight, smooth Masonry without layout thrashing */
@@ -80,11 +80,21 @@
       break-inside: avoid;
       margin-bottom: 1.5rem;
       transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      content-visibility: auto;
+      contain-intrinsic-size: 300px 450px;
     }
     @media (min-width: 1024px) {
       .gallery-item {
         margin-bottom: 1.75rem;
       }
+    }
+
+    /* Fix für Home-Cover Hover-Effekt: Kein unschöner Balken unten */
+    .home-title-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.35) 60%, transparent 100%);
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
 
     /* Smooth filter hiding and showing */
@@ -115,20 +125,135 @@
       transform: scale(1);
       opacity: 1;
     }
+
+    /* Light Mode Overrides */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    body.light-mode header {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    body.light-mode #brand-home-link h1 {
+      color: #737373;
+    }
+    body.light-mode #brand-home-link p {
+      color: #000000;
+    }
+    body.light-mode .filter-btn {
+      border-color: rgba(0, 0, 0, 0.15);
+      color: #525252;
+    }
+    body.light-mode .filter-btn:hover {
+      color: #000000;
+      border-color: #000000;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+    body.light-mode .filter-btn.active-filter {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      border-color: #000000 !important;
+    }
+    body.light-mode .gallery-item {
+      background-color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+    }
+    body.light-mode footer {
+      background-color: #ffffff;
+      border-color: rgba(0, 0, 0, 0.08);
+      color: #737373;
+    }
+    body.light-mode #active-category-label,
+    body.light-mode #item-counter {
+      color: #737373;
+    }
+
+    /* Sun & Moon Mountain Animation Toggle - Pure Black & White */
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 45;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    body.light-mode .theme-toggle-btn {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .theme-toggle-btn:hover {
+      border-color: rgba(0, 0, 0, 0.5);
+    }
+    .toggle-svg-canvas {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .celestial-body {
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    /* Dark mode state: Moon is up, Sun is down */
+    .moon-body {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .sun-body {
+      transform: translateY(32px) scale(0.6);
+      opacity: 0;
+    }
+    /* Light mode state: Sun rises, Moon hides */
+    body.light-mode .moon-body {
+      transform: translateY(32px) scale(0.6);
+      opacity: 0;
+    }
+    body.light-mode .sun-body {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .mountain-fg {
+      transition: fill 0.3s ease;
+    }
+    body.light-mode .mountain-back {
+      fill: #a3a3a3;
+    }
+    body.light-mode .mountain-front {
+      fill: #525252;
+    }
+    body.light-mode .mountain-base {
+      fill: #ffffff;
+    }
   </style>
 </head>
 
-<body class="bg-[#0c0d12] text-zinc-100 font-sans min-h-screen flex flex-col selection:bg-white/20 selection:text-white antialiased">
+<body class="bg-[#000000] text-neutral-100 font-sans min-h-screen flex flex-col selection:bg-white/20 selection:text-white antialiased">
 
   <!-- Header Section -->
-  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#0c0d12]/85 border-b border-white/[0.07] transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 text-center">
-      <!-- Title / Brand (Click triggers Home) -->
-      <a href="#" id="brand-home-link" class="inline-block group focus:outline-none">
-        <h1 class="text-xs sm:text-sm tracking-[0.35em] text-zinc-400 uppercase font-medium mb-1 transition-colors group-hover:text-zinc-200">
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#000000]/90 border-b border-white/[0.08] transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col items-center justify-center text-center">
+      
+      <!-- Brand Logo / Name: Clickable to go back to Home -->
+      <a href="#" id="brand-home-link" class="inline-block group cursor-pointer focus:outline-none" title="Zurück zur Startseite">
+        <h1 class="text-xs sm:text-sm tracking-[0.35em] text-zinc-400 group-hover:text-white transition-colors duration-200 uppercase font-light mb-1">
           Leo Stäger
         </h1>
-        <p class="text-xl sm:text-2xl md:text-3xl font-serif tracking-[0.2em] font-normal text-white uppercase">
+        <p class="text-xl sm:text-2xl md:text-3xl font-serif tracking-[0.2em] font-normal text-white uppercase group-hover:opacity-90 transition-opacity duration-200">
           Photography
         </p>
       </a>
@@ -220,7 +345,7 @@
         </div>
       </article>
 
-      <!-- Animals Cover Image: Groß (DSC02573) -->
+      <!-- Cover Animals (DSC02573) -->
       <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
                data-category="animals"
                data-is-cover="true"
@@ -230,8 +355,8 @@
           <img src="https://raw.githubusercontent.com/schorschgago/portfolio/main/images/animals/Gro%C3%9F%20(DSC02573).jpeg" 
                alt="Animals - DSC02573" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
-        <!-- Centered Home Title Overlay -->
-        <div class="home-title-overlay absolute inset-x-0 bottom-0 py-6 px-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-end text-center pointer-events-none transition-transform duration-300 group-hover:-translate-y-1">
+        <!-- Centered Home Title Overlay (Balken-Fix durch optimierten Verlauf) -->
+        <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Animals</span>
           <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
@@ -335,7 +460,7 @@
                alt="Aviation - unbenannt-1626" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <!-- Centered Home Title Overlay -->
-        <div class="home-title-overlay absolute inset-x-0 bottom-0 py-6 px-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-end text-center pointer-events-none transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Aviation</span>
           <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
@@ -357,8 +482,8 @@
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
-          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
-            <span>F-35 Lightning II</span><span>·</span><span>Flight Display</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -373,8 +498,8 @@
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
-          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
-            <span>F-35 Tactical Maneuver</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -503,7 +628,7 @@
                alt="Environments - DSC01975" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <!-- Centered Home Title Overlay -->
-        <div class="home-title-overlay absolute inset-x-0 bottom-0 py-6 px-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-end text-center pointer-events-none transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Environments</span>
           <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
@@ -541,8 +666,8 @@
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
           <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
-          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
-            <span>Landscape Horizons</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Keine Metadaten verfügbar</span>
           </div>
         </div>
       </article>
@@ -671,7 +796,7 @@
                alt="Food - DSC09835" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <!-- Centered Home Title Overlay -->
-        <div class="home-title-overlay absolute inset-x-0 bottom-0 py-6 px-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-end text-center pointer-events-none transition-transform duration-300 group-hover:-translate-y-1">
+        <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
           <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Food</span>
           <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
@@ -815,14 +940,58 @@
   </main>
 
   <!-- Minimal Footer -->
-  <footer class="mt-auto border-t border-white/[0.06] bg-[#0c0d12] py-8 text-center text-xs tracking-widest text-zinc-500 uppercase">
+  <footer class="mt-auto border-t border-white/[0.08] bg-[#000000] py-8 text-center text-xs tracking-widest text-neutral-500 uppercase">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div>&copy; <span id="year"></span> LEO STÄGER. ALL RIGHTS RESERVED.</div>
-      <div class="flex items-center space-x-6 text-zinc-400">
+      <div class="flex items-center space-x-6 text-neutral-400">
         <span class="hover:text-white transition-colors cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top &uarr;</span>
       </div>
     </div>
   </footer>
+
+  <!-- Theme Toggle Button (Pure Black & White Sun & Moon behind Mountain) -->
+  <button id="theme-toggle" 
+          type="button" 
+          class="theme-toggle-btn group" 
+          aria-label="Design-Modus wechseln" 
+          title="Light / Dark Mode umschalten">
+    <svg class="toggle-svg-canvas" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <!-- MOON (Pure White & Black) -->
+        <g class="celestial-body moon-body">
+          <circle cx="30" cy="20" r="7.5" fill="#ffffff" />
+          <path d="M33 13.8C31.5 15.2 31 17.5 32 19.8C32.4 20.8 33.3 21.7 34.4 22.3C33.2 24.1 30.9 25.2 28.5 24.8C25.3 24.1 23.5 20.7 24.4 17.5C25 15.2 27.2 13.5 29.5 13.5C30.7 13.5 31.9 14 33 13.8Z" fill="#000000" />
+        </g>
+
+        <!-- SUN (Monochrome Outline & Center) -->
+        <g class="celestial-body sun-body">
+          <circle cx="30" cy="20" r="6.5" fill="#000000" />
+          <g stroke="#000000" stroke-width="1.8" stroke-linecap="round">
+            <line x1="30" y1="8" x2="30" y2="10.5" />
+            <line x1="30" y1="29.5" x2="30" y2="32" />
+            <line x1="18" y1="20" x2="20.5" y2="20" />
+            <line x1="39.5" y1="20" x2="42" y2="20" />
+            <line x1="21.5" y1="11.5" x2="23.3" y2="13.3" />
+            <line x1="36.7" y1="26.7" x2="38.5" y2="28.5" />
+            <line x1="21.5" y1="28.5" x2="23.3" y2="26.7" />
+            <line x1="36.7" y1="13.3" x2="38.5" y2="11.5" />
+          </g>
+        </g>
+      </g>
+
+      <!-- MOUNTAINS (Black, White & Neutral Grays) -->
+      <!-- Back Mountain -->
+      <path class="mountain-fg mountain-back" d="M11 48L24 31L37 48H11Z" fill="#333333" />
+      <polygon points="24,31 21.5,35 24,34 26.5,35" fill="#ffffff" opacity="0.4" />
+
+      <!-- Front Mountain -->
+      <path class="mountain-fg mountain-front" d="M22 52L38 27L53 52H22Z" fill="#171717" />
+      <polygon points="38,27 34,34 38,32 41,34" fill="#ffffff" opacity="0.6" />
+
+      <!-- Base Ground -->
+      <rect x="0" y="48" width="60" height="12" fill="#000000" class="mountain-fg mountain-base" />
+    </svg>
+  </button>
 
   <!-- Lightbox Modal -->
   <div id="lightbox" 
@@ -874,10 +1043,6 @@
           <span id="lightbox-category" class="text-zinc-500 uppercase font-semibold text-[10px] tracking-widest border border-white/15 px-2 py-0.5 rounded"></span>
           <span id="lightbox-exif" class="font-mono text-zinc-200"></span>
         </div>
-        <div class="flex items-center space-x-3 text-zinc-500 font-mono text-xs">
-          <span id="lightbox-camera"></span>
-          <span id="lightbox-counter"></span>
-        </div>
       </div>
     </div>
   </div>
@@ -899,8 +1064,6 @@
       const lightboxImg = document.getElementById('lightbox-img');
       const lightboxCategory = document.getElementById('lightbox-category');
       const lightboxExif = document.getElementById('lightbox-exif');
-      const lightboxCamera = document.getElementById('lightbox-camera');
-      const lightboxCounter = document.getElementById('lightbox-counter');
       const lightboxClose = document.getElementById('lightbox-close');
       const lightboxPrev = document.getElementById('lightbox-prev');
       const lightboxNext = document.getElementById('lightbox-next');
@@ -919,6 +1082,36 @@
       };
 
       // ----------------------------------------------------
+      // Dark / Light Mode Switcher Logic
+      // ----------------------------------------------------
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      let isLightMode = false;
+
+      function updateThemeButtons() {
+        filterBtns.forEach(b => {
+          const isActive = (b.getAttribute('data-filter') === currentFilter);
+          if (isActive) {
+            b.classList.add('active-filter');
+            if (isLightMode) {
+              b.classList.remove('bg-white', 'text-[#0c0d12]');
+            } else {
+              b.classList.add('bg-white', 'text-[#0c0d12]');
+            }
+          } else {
+            b.classList.remove('active-filter', 'bg-white', 'text-[#0c0d12]');
+          }
+        });
+      }
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          isLightMode = !isLightMode;
+          document.body.classList.toggle('light-mode', isLightMode);
+          updateThemeButtons();
+        });
+      }
+
+      // ----------------------------------------------------
       // Filter Logic (Home = 1 Cover per Category)
       // ----------------------------------------------------
       function applyFilter(filterValue) {
@@ -927,13 +1120,17 @@
         // Update active button state styles
         filterBtns.forEach(b => {
           if (b.getAttribute('data-filter') === filterValue) {
-            b.classList.add('bg-white', 'text-[#0c0d12]', 'font-medium', 'border-white/20');
-            b.classList.remove('text-zinc-400', 'border-white/10');
+            b.classList.add('active-filter');
+            if (!isLightMode) {
+              b.classList.add('bg-white', 'text-[#0c0d12]', 'font-medium', 'border-white/20');
+              b.classList.remove('text-zinc-400', 'border-white/10');
+            }
           } else {
-            b.classList.remove('bg-white', 'text-[#0c0d12]', 'font-medium', 'border-white/20');
+            b.classList.remove('active-filter', 'bg-white', 'text-[#0c0d12]', 'font-medium', 'border-white/20');
             b.classList.add('border-white/10', 'text-zinc-400');
           }
         });
+        updateThemeButtons();
 
         // Toggle badge / overlays visibility and items
         galleryItems.forEach(item => {
@@ -976,7 +1173,7 @@
         activeCategoryLabel.textContent = categoryNames[filterValue] || 'Portfolio';
         itemCounter.textContent = filterValue === 'home' 
           ? `${currentFilteredItems.length} Kategorien` 
-          : `${currentFilteredItems.length} Arbeiten`;
+          : `${currentFilteredItems.length} Fotos`;
       }
 
       filterBtns.forEach(btn => {
@@ -1024,7 +1221,6 @@
         const aperture = currentItem.getAttribute('data-aperture') || '—';
         const iso = currentItem.getAttribute('data-iso') || '—';
         const focal = currentItem.getAttribute('data-focal') || '';
-        const camera = currentItem.getAttribute('data-camera') || '';
         const category = currentItem.getAttribute('data-category') || '';
 
         lightboxImg.src = imgSrc;
@@ -1036,9 +1232,7 @@
         if (focal && focal !== '—') exifSpecs.push(focal);
         if (iso && iso !== '—') exifSpecs.push(iso);
 
-        lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : 'Archivaufnahme';
-        lightboxCamera.textContent = camera;
-        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentFilteredItems.length}`;
+        lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : 'Keine Metadaten verfügbar';
       }
 
       function openLightbox(item) {
