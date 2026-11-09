@@ -62,7 +62,6 @@
       display: block;
       column-gap: 1.5rem;
       column-count: 1;
-      column-fill: auto; /* Verhindert das Zusammenquetschen in die ersten Spalten bei wenigen Elementen */
     }
     @media (min-width: 640px) {
       .portfolio-grid.category-grid {
@@ -81,12 +80,11 @@
     }
 
     .portfolio-grid.category-grid .gallery-item {
-      display: block;
+      display: inline-block;
       width: 100%;
       margin-bottom: 1.5rem;
       break-inside: avoid;
       -webkit-column-break-inside: avoid;
-      page-break-inside: avoid;
     }
 
     /* Home Grid: Always strictly 2-columns, 4-columns or 5-columns */
