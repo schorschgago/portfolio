@@ -494,6 +494,11 @@
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
           Food
         </button>
+        <button type="button" 
+                data-filter="design" 
+                class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
+          Design
+        </button>
       </nav>
     </div>
   </header>
@@ -504,7 +509,7 @@
     <!-- Item Counter & Active Filter Indication -->
     <div class="flex justify-between items-center text-xs tracking-wider uppercase text-zinc-500 mb-6 px-1">
       <span id="active-category-label">Home — Übersicht</span>
-      <span id="item-counter">4 Kategorien</span>
+      <span id="item-counter">5 Kategorien</span>
     </div>
 
     <!-- Responsive Photo Grid (Left-aligned, Switchable between Home & Category layouts) -->
@@ -1150,6 +1155,89 @@
         </div>
       </article>
 
+      <!-- ================= DESIGN ================= -->
+      <!-- Cover Design (Home Cover): Magazin-M273 -->
+      <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
+               data-category="design"
+               data-is-cover="true"
+               data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Magazin (5 Seiten)"
+               data-src="images/design/magazin-p1.jpg"
+               data-pages='["images/design/magazin-p1.jpg","images/design/magazin-p2.jpg","images/design/magazin-p3.jpg","images/design/magazin-p4.jpg","images/design/magazin-p5.jpg"]'
+               data-pdf="assets/112025_Magazin-M273_Leo_Staeger.pdf">
+        <div class="overflow-hidden bg-[#151720]">
+          <img src="images/design/magazin-p1.jpg" 
+               alt="Magazin Design M273" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <!-- Centered Home Title Overlay -->
+        <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Design</span>
+          <span class="text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
+        </div>
+        <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design · 5 Seiten</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Magazin M273</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Flyer M273 -->
+      <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
+               data-category="design"
+               data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Flyer"
+               data-src="images/design/flyer-p1.jpg"
+               data-pages='["images/design/flyer-p1.jpg"]'
+               data-pdf="assets/112025_Flyer-M273_Leo_Staeger.pdf">
+        <div class="overflow-hidden bg-[#151720]">
+          <img src="images/design/flyer-p1.jpg" 
+               alt="Flyer Design M273" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Flyer M273</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Imageplakat M274 -->
+      <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
+               data-category="design"
+               data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Imageplakat"
+               data-src="images/design/plakat-p1.jpg"
+               data-pages='["images/design/plakat-p1.jpg"]'
+               data-pdf="assets/012025_Imageplakat_M274_Leo_Livio_Ansicht.pdf">
+        <div class="overflow-hidden bg-[#151720]">
+          <img src="images/design/plakat-p1.jpg" 
+               alt="Imageplakat M274" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Imageplakat M274</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Konzept SHIFT Teil 3 M275 -->
+      <article class="gallery-item group relative overflow-hidden rounded-xl bg-[#13151c] border border-white/[0.07] cursor-pointer"
+               data-category="design"
+               data-shutter="—" data-aperture="—" data-focal="—" data-iso="—" data-camera="Design · Konzept SHIFT (11 Seiten)"
+               data-src="images/design/konzept-shift-p1.jpg"
+               data-pages='["images/design/konzept-shift-p1.jpg","images/design/konzept-shift-p2.jpg","images/design/konzept-shift-p3.jpg","images/design/konzept-shift-p4.jpg","images/design/konzept-shift-p5.jpg","images/design/konzept-shift-p6.jpg","images/design/konzept-shift-p7.jpg","images/design/konzept-shift-p8.jpg","images/design/konzept-shift-p9.jpg","images/design/konzept-shift-p10.jpg","images/design/konzept-shift-p11.jpg"]'
+               data-pdf="assets/052026_M275_Stäger_Leo_Konzept-SHIFT_Teil3.pdf">
+        <div class="overflow-hidden bg-[#151720]">
+          <img src="images/design/konzept-shift-p1.jpg" 
+               alt="Konzept SHIFT M275" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
+        </div>
+        <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design · 11 Seiten</span>
+          <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
+            <span>Konzept SHIFT Teil 3</span>
+          </div>
+        </div>
+      </article>
+
     </div>
   </main>
 
@@ -1187,7 +1275,7 @@
           </li>
           <li>
             <span class="detail-label">Galerien</span>
-            <span class="detail-value">Animals, Aviation, Environments, Food</span>
+            <span class="detail-value">Animals, Aviation, Environments, Food, Design</span>
           </li>
           <li>
             <span class="detail-label">Gear</span>
@@ -1306,6 +1394,20 @@
           <span id="lightbox-category" class="text-zinc-500 uppercase font-semibold text-[10px] tracking-widest border border-white/15 px-2 py-0.5 rounded"></span>
           <span id="lightbox-exif" class="font-mono text-zinc-200"></span>
         </div>
+        <!-- Multi-page PDF pager controls -->
+        <div id="lightbox-page-controls" class="hidden items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+          <button id="lightbox-page-prev" type="button" class="p-1 hover:text-white transition-colors focus:outline-none" title="Vorherige Seite">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <span id="lightbox-page-indicator" class="font-mono text-[11px] text-zinc-200 px-1">Seite 1 / 1</span>
+          <button id="lightbox-page-next" type="button" class="p-1 hover:text-white transition-colors focus:outline-none" title="Nächste Seite">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+          <a id="lightbox-pdf-link" href="#" target="_blank" rel="noopener noreferrer" class="ml-2 pl-2 border-l border-white/20 text-xs text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1" title="Original-PDF öffnen">
+            <span>PDF</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1330,10 +1432,17 @@
       const lightboxClose = document.getElementById('lightbox-close');
       const lightboxPrev = document.getElementById('lightbox-prev');
       const lightboxNext = document.getElementById('lightbox-next');
+      const lightboxPageControls = document.getElementById('lightbox-page-controls');
+      const lightboxPagePrev = document.getElementById('lightbox-page-prev');
+      const lightboxPageNext = document.getElementById('lightbox-page-next');
+      const lightboxPageIndicator = document.getElementById('lightbox-page-indicator');
+      const lightboxPdfLink = document.getElementById('lightbox-pdf-link');
 
       let currentFilter = 'home';
       let currentFilteredItems = [];
       let currentLightboxIndex = 0;
+      let currentItemPages = [];
+      let currentPageIndex = 0;
 
       // Category display names dictionary
       const categoryNames = {
@@ -1341,7 +1450,8 @@
         'animals': 'Animals Galerie',
         'aviation': 'Aviation Galerie',
         'environments': 'Environments Galerie',
-        'food': 'Food Galerie'
+        'food': 'Food Galerie',
+        'design': 'Design Galerie'
       };
 
       // ----------------------------------------------------
@@ -1482,8 +1592,17 @@
       });
 
       // ----------------------------------------------------
-      // Lightbox Operations (Showing EXIF: ISO, Shutter, Aperture)
+      // Lightbox Operations (Showing EXIF: ISO, Shutter, Aperture & Multi-page PDFs)
       // ----------------------------------------------------
+      function updateLightboxPage(pageIdx) {
+        if (!currentItemPages.length) return;
+        currentPageIndex = (pageIdx + currentItemPages.length) % currentItemPages.length;
+        lightboxImg.src = currentItemPages[currentPageIndex];
+        if (lightboxPageIndicator) {
+          lightboxPageIndicator.textContent = `Seite ${currentPageIndex + 1} / ${currentItemPages.length}`;
+        }
+      }
+
       function updateLightboxContent(index) {
         if (!currentFilteredItems.length) return;
         currentLightboxIndex = (index + currentFilteredItems.length) % currentFilteredItems.length;
@@ -1494,18 +1613,60 @@
         const aperture = currentItem.getAttribute('data-aperture') || '—';
         const iso = currentItem.getAttribute('data-iso') || '—';
         const focal = currentItem.getAttribute('data-focal') || '';
+        const camera = currentItem.getAttribute('data-camera') || '';
         const category = currentItem.getAttribute('data-category') || '';
+        const pagesRaw = currentItem.getAttribute('data-pages');
+        const pdfPath = currentItem.getAttribute('data-pdf');
 
-        lightboxImg.src = imgSrc;
+        if (pagesRaw) {
+          try {
+            currentItemPages = JSON.parse(pagesRaw);
+          } catch(e) {
+            currentItemPages = [imgSrc];
+          }
+        } else {
+          currentItemPages = [imgSrc];
+        }
+        currentPageIndex = 0;
+
+        lightboxImg.src = currentItemPages[0];
         lightboxCategory.textContent = category.toUpperCase();
 
         const exifSpecs = [];
+        if (camera && camera !== '—') exifSpecs.push(camera);
         if (shutter && shutter !== '—') exifSpecs.push(shutter);
         if (aperture && aperture !== '—') exifSpecs.push(aperture);
         if (focal && focal !== '—') exifSpecs.push(focal);
         if (iso && iso !== '—') exifSpecs.push(iso);
 
         lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : 'Keine Metadaten verfügbar';
+
+        // Multi-page pager visibility
+        if (currentItemPages.length > 1 || pdfPath) {
+          lightboxPageControls.classList.remove('hidden');
+          lightboxPageControls.classList.add('flex');
+          
+          if (currentItemPages.length > 1) {
+            lightboxPagePrev.style.display = 'inline-flex';
+            lightboxPageNext.style.display = 'inline-flex';
+            lightboxPageIndicator.style.display = 'inline-block';
+            lightboxPageIndicator.textContent = `Seite 1 / ${currentItemPages.length}`;
+          } else {
+            lightboxPagePrev.style.display = 'none';
+            lightboxPageNext.style.display = 'none';
+            lightboxPageIndicator.style.display = 'none';
+          }
+
+          if (pdfPath && lightboxPdfLink) {
+            lightboxPdfLink.href = pdfPath;
+            lightboxPdfLink.style.display = 'inline-flex';
+          } else if (lightboxPdfLink) {
+            lightboxPdfLink.style.display = 'none';
+          }
+        } else {
+          lightboxPageControls.classList.add('hidden');
+          lightboxPageControls.classList.remove('flex');
+        }
       }
 
       function openLightbox(item) {
@@ -1525,11 +1686,38 @@
       }
 
       function showPrevImage() {
-        updateLightboxContent(currentLightboxIndex - 1);
+        // If current item has multiple pages, page back first or switch item
+        if (currentItemPages.length > 1 && currentPageIndex > 0) {
+          updateLightboxPage(currentPageIndex - 1);
+        } else {
+          updateLightboxContent(currentLightboxIndex - 1);
+          if (currentItemPages.length > 1) {
+            updateLightboxPage(currentItemPages.length - 1);
+          }
+        }
       }
 
       function showNextImage() {
-        updateLightboxContent(currentLightboxIndex + 1);
+        // If current item has multiple pages, page forward first or switch item
+        if (currentItemPages.length > 1 && currentPageIndex < currentItemPages.length - 1) {
+          updateLightboxPage(currentPageIndex + 1);
+        } else {
+          updateLightboxContent(currentLightboxIndex + 1);
+        }
+      }
+
+      // Page buttons for multi-page documents
+      if (lightboxPagePrev) {
+        lightboxPagePrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateLightboxPage(currentPageIndex - 1);
+        });
+      }
+      if (lightboxPageNext) {
+        lightboxPageNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateLightboxPage(currentPageIndex + 1);
+        });
       }
 
       // Close button
