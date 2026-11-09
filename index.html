@@ -54,34 +54,43 @@
 
     /* Responsive Grid Layouts - Strictly Left-Aligned */
     .portfolio-grid {
-      display: grid;
-      gap: 1.5rem;
       width: 100%;
-      align-items: start;
     }
 
-    /* Standard Category Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop */
+    /* Standard Category Grid: Real Masonry via CSS Columns to prevent row gaps */
     .portfolio-grid.category-grid {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
+      display: block;
+      column-gap: 1.5rem;
+      column-count: 1;
     }
     @media (min-width: 640px) {
       .portfolio-grid.category-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-count: 2;
       }
     }
     @media (min-width: 1024px) {
       .portfolio-grid.category-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-count: 3;
       }
     }
     @media (min-width: 1536px) {
       .portfolio-grid.category-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-count: 4;
       }
+    }
+
+    .portfolio-grid.category-grid .gallery-item {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
     }
 
     /* Home Grid: Always strictly 2-columns or 4-columns */
     .portfolio-grid.home-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
     @media (min-width: 640px) {
