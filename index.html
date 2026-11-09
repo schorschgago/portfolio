@@ -62,6 +62,7 @@
       display: block;
       column-gap: 1.5rem;
       column-count: 1;
+      column-fill: auto; /* Verhindert das Zusammenquetschen in die ersten Spalten bei wenigen Elementen */
     }
     @media (min-width: 640px) {
       .portfolio-grid.category-grid {
@@ -80,13 +81,15 @@
     }
 
     .portfolio-grid.category-grid .gallery-item {
-      display: inline-block;
+      display: block;
+      width: 100%;
       margin-bottom: 1.5rem;
       break-inside: avoid;
       -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
     }
 
-    /* Home Grid: Always strictly 2-columns or 4-columns */
+    /* Home Grid: Always strictly 2-columns, 4-columns or 5-columns */
     .portfolio-grid.home-grid {
       display: grid;
       gap: 1.5rem;
@@ -98,9 +101,14 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+    @media (min-width: 1024px) {
+      .portfolio-grid.home-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
     @media (min-width: 1280px) {
       .portfolio-grid.home-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
       }
     }
 
@@ -1346,7 +1354,7 @@
 
   <!-- Lightbox Modal -->
   <div id="lightbox" 
-       class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/92 opacity-0 pointer-events-none backdrop-blur-md"
+       class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/92 opacity-0 pointer-events-none backdrop-blur-md"
        role="dialog"
        aria-modal="true"
        aria-label="Image Preview">
@@ -1354,7 +1362,7 @@
     <!-- Close Button -->
     <button id="lightbox-close" 
             type="button" 
-            class="absolute top-5 right-5 sm:top-7 sm:right-7 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-white/40"
+            class="absolute top-5 right-5 sm:top-7 sm:right-7 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-white/40 shadow-lg"
             aria-label="Close Lightbox">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"></path>
@@ -1364,7 +1372,7 @@
     <!-- Navigation Previous -->
     <button id="lightbox-prev" 
             type="button" 
-            class="absolute left-3 sm:left-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors focus:outline-none hidden sm:flex items-center justify-center"
+            class="absolute left-3 sm:left-6 md:left-8 z-50 p-3.5 rounded-full bg-black/60 hover:bg-black/85 text-white border border-white/20 backdrop-blur-md transition-all focus:outline-none hidden sm:flex items-center justify-center shadow-2xl hover:scale-105"
             aria-label="Previous image">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -1374,7 +1382,7 @@
     <!-- Navigation Next -->
     <button id="lightbox-next" 
             type="button" 
-            class="absolute right-3 sm:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors focus:outline-none hidden sm:flex items-center justify-center"
+            class="absolute right-3 sm:right-6 md:right-8 z-50 p-3.5 rounded-full bg-black/60 hover:bg-black/85 text-white border border-white/20 backdrop-blur-md transition-all focus:outline-none hidden sm:flex items-center justify-center shadow-2xl hover:scale-105"
             aria-label="Next image">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1382,11 +1390,11 @@
     </button>
 
     <!-- Content Card -->
-    <div id="lightbox-img-wrapper" class="relative max-w-full max-h-full flex flex-col items-center scale-95 opacity-0 select-none">
+    <div id="lightbox-img-wrapper" class="relative max-w-[calc(100vw-7rem)] md:max-w-[calc(100vw-11rem)] max-h-full flex flex-col items-center scale-95 opacity-0 select-none">
       <img id="lightbox-img" 
            src="" 
            alt="Portfolio Großansicht" 
-           class="max-w-full max-h-[82vh] object-contain rounded-lg shadow-2xl border border-white/10">
+           class="max-w-full max-h-[78vh] object-contain rounded-lg shadow-2xl border border-white/10">
       
       <!-- EXIF / Info Bar in Lightbox -->
       <div class="mt-3.5 flex flex-wrap items-center justify-between w-full px-2 text-xs text-zinc-400 tracking-wider gap-2">
