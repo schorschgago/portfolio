@@ -74,17 +74,17 @@
     }
     @media (min-width: 640px) {
       .portfolio-grid.category-grid {
-        column-count: 2;
+        column-count: var(--cat-cols, 2);
       }
     }
     @media (min-width: 1024px) {
       .portfolio-grid.category-grid {
-        column-count: 3;
+        column-count: var(--cat-cols, 3);
       }
     }
     @media (min-width: 1536px) {
       .portfolio-grid.category-grid {
-        column-count: 4;
+        column-count: var(--cat-cols, 4);
       }
     }
 
@@ -161,7 +161,93 @@
       transform: scale(1);
     }
 
-    /* Lightbox animations */
+    /* ── Page-flip: realistic page peel that reveals the next page beneath ── */
+
+    /* Stage shrink-wraps to the front image so % positioning works */
+    #lightbox-flip-stage {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* New page sits behind the current one */
+    #flip-back-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    /* Front image sits above the back image */
+    #lightbox-img {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    /*
+      Fold-shadow strip — a narrow vertical bar that travels across the page,
+      simulating the 3-D crease of a turning page.
+      Left half: dark shadow cast by the curling page.
+      Right half: lighter highlight on the back of the page.
+    */
+    #flip-fold-edge {
+      position: absolute;
+      top: 1%;
+      bottom: 1%;
+      width: 56px;
+      margin-left: -28px;      /* centred on the crease */
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      border-radius: 1px;
+      background: linear-gradient(to right,
+        transparent                    0%,
+        rgba(0,0,0,0.04)              12%,
+        rgba(0,0,0,0.22)              35%,
+        rgba(0,0,0,0.60)              50%,   /* crease centre */
+        rgba(255,255,255,0.08)        62%,   /* back-of-page highlight */
+        rgba(255,255,255,0.03)        78%,
+        transparent                   100%
+      );
+    }
+
+    /* ── Forward: right edge peels to the left ── */
+    @keyframes pageExitFwd {
+      0%   { clip-path: inset(0 0%   0 0 round 8px); }
+      100% { clip-path: inset(0 101% 0 0 round 8px); }
+    }
+    @keyframes foldEdgeFwd {
+      0%   { left: calc(100% - 28px); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { left: -28px;            opacity: 0; }
+    }
+
+    /* ── Backward: left edge peels to the right ── */
+    @keyframes pageExitBwd {
+      0%   { clip-path: inset(0 0 0 0%   round 8px); }
+      100% { clip-path: inset(0 0 0 101% round 8px); }
+    }
+    @keyframes foldEdgeBwd {
+      0%   { left: -28px;            opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { left: calc(100% - 28px); opacity: 0; }
+    }
+
+    /* ease-in gives a natural "picked up slowly, then flung" feel */
+    #lightbox-img.flip-exit-fwd  { animation: pageExitFwd 0.52s cubic-bezier(0.4,0,0.75,0.3) forwards; }
+    #lightbox-img.flip-exit-bwd  { animation: pageExitBwd 0.52s cubic-bezier(0.4,0,0.75,0.3) forwards; }
+    #flip-fold-edge.edge-fwd     { animation: foldEdgeFwd 0.52s cubic-bezier(0.4,0,0.75,0.3) forwards; }
+    #flip-fold-edge.edge-bwd     { animation: foldEdgeBwd 0.52s cubic-bezier(0.4,0,0.75,0.3) forwards; }
     #lightbox {
       transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
     }
@@ -255,74 +341,152 @@
       font-weight: 400 !important;
     }
 
-    /* Sun & Moon Mountain Animation Toggle - Pure Black & White */
+    /* ── Theme Toggle: refined pill with sliding knob ── */
     .theme-toggle-btn {
       position: fixed;
       bottom: 1.75rem;
       right: 1.75rem;
       z-index: 45;
-      width: 56px;
-      height: 56px;
+      /* Pill shape */
+      width: 112px;
+      height: 44px;
       border-radius: 9999px;
       cursor: pointer;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      /* Dark-mode track */
+      background: #0a0a0a;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 8px 32px rgba(0, 0, 0, 0.7),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+      transition:
+        background 0.45s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.45s cubic-bezier(0.4,0,0.2,1),
+        box-shadow 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .theme-toggle-btn:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 12px 40px rgba(0, 0, 0, 0.75),
+        0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    body.light-mode .theme-toggle-btn {
+      background: #f5f5f5;
+      border-color: rgba(0, 0, 0, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.03) inset,
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        0 1px 4px rgba(0, 0, 0, 0.07);
+    }
+    body.light-mode .theme-toggle-btn:hover {
+      border-color: rgba(0, 0, 0, 0.22);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.04) inset,
+        0 6px 24px rgba(0, 0, 0, 0.14),
+        0 0 16px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Sliding knob */
+    .toggle-knob {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #000000;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.6),
+        0 0 1px rgba(255,255,255,0.08) inset;
+      /* knob starts at left (dark = moon side) */
+      transform: translateX(0);
+      transition:
+        transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
     }
-    .theme-toggle-btn:hover {
-      transform: translateY(-2px) scale(1.05);
-      border-color: rgba(255, 255, 255, 0.4);
-    }
-    body.light-mode .theme-toggle-btn {
+    body.light-mode .toggle-knob {
       background: #ffffff;
-      border-color: rgba(0, 0, 0, 0.2);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.12),
+        0 0 1px rgba(0,0,0,0.05) inset;
+      /* knob slides to right (light = sun side) */
+      transform: translateX(68px);
     }
-    body.light-mode .theme-toggle-btn:hover {
-      border-color: rgba(0, 0, 0, 0.5);
-    }
-    .toggle-svg-canvas {
-      width: 100%;
-      height: 100%;
+
+    /* Track labels (moon left, sun right) */
+    .toggle-track-labels {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
       pointer-events: none;
+      color: #ffffff;
     }
-    .celestial-body {
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    body.light-mode .toggle-track-labels {
+      color: #000000;
     }
-    /* Dark mode state: Moon is up, Sun is down */
-    .moon-body {
-      transform: translateY(0);
+    .toggle-track-moon,
+    .toggle-track-sun {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      transition: opacity 0.35s ease;
+    }
+    /* Dark mode: moon on left is hidden by knob, sun on right glows faintly */
+    .toggle-track-moon { opacity: 0.18; }
+    .toggle-track-sun  { opacity: 0.5; }
+    /* Light mode: sun on right is hidden by knob, moon on left glows faintly */
+    body.light-mode .toggle-track-moon { opacity: 0.45; }
+    body.light-mode .toggle-track-sun  { opacity: 0.15; }
+
+    /* Icon inside knob */
+    .toggle-knob-icon {
+      width: 18px;
+      height: 18px;
+      position: relative;
+    }
+    /* Moon icon inside knob */
+    .knob-moon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.4,0.64,1);
       opacity: 1;
+      transform: scale(1) rotate(0deg);
     }
-    .sun-body {
-      transform: translateY(32px) scale(0.6);
+    .knob-sun {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.4,0.64,1);
       opacity: 0;
+      transform: scale(0.4) rotate(-90deg);
     }
-    /* Light mode state: Sun rises, Moon hides */
-    body.light-mode .moon-body {
-      transform: translateY(32px) scale(0.6);
+    body.light-mode .knob-moon {
       opacity: 0;
+      transform: scale(0.4) rotate(90deg);
     }
-    body.light-mode .sun-body {
-      transform: translateY(0) scale(1);
+    body.light-mode .knob-sun {
       opacity: 1;
-    }
-    .mountain-fg {
-      transition: fill 0.3s ease;
-    }
-    body.light-mode .mountain-back {
-      fill: #a3a3a3;
-    }
-    body.light-mode .mountain-front {
-      fill: #525252;
-    }
-    body.light-mode .mountain-base {
-      fill: #ffffff;
+      transform: scale(1) rotate(0deg);
     }
 
          /* --- Über Mich Sektion (Dark & Light optimiert) --- */
@@ -1371,48 +1535,66 @@
     </div>
   </footer>
 
-  <!-- Theme Toggle Button (Pure Black & White Sun & Moon behind Mountain) -->
-  <button id="theme-toggle" 
-          type="button" 
-          class="theme-toggle-btn group" 
-          aria-label="Design-Modus wechseln" 
+  <!-- Theme Toggle Button: Refined pill with sliding knob -->
+  <button id="theme-toggle"
+          type="button"
+          class="theme-toggle-btn"
+          aria-label="Design-Modus wechseln"
           title="Light / Dark Mode umschalten">
-    <svg class="toggle-svg-canvas" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g>
-        <!-- MOON (Pure White & Black) -->
-        <g class="celestial-body moon-body">
-          <circle cx="30" cy="20" r="7.5" fill="#ffffff" />
-          <path d="M33 13.8C31.5 15.2 31 17.5 32 19.8C32.4 20.8 33.3 21.7 34.4 22.3C33.2 24.1 30.9 25.2 28.5 24.8C25.3 24.1 23.5 20.7 24.4 17.5C25 15.2 27.2 13.5 29.5 13.5C30.7 13.5 31.9 14 33 13.8Z" fill="#000000" />
-        </g>
 
-        <!-- SUN (Monochrome Outline & Center) -->
-        <g class="celestial-body sun-body">
-          <circle cx="30" cy="20" r="6.5" fill="#000000" />
-          <g stroke="#000000" stroke-width="1.8" stroke-linecap="round">
-            <line x1="30" y1="8" x2="30" y2="10.5" />
-            <line x1="30" y1="29.5" x2="30" y2="32" />
-            <line x1="18" y1="20" x2="20.5" y2="20" />
-            <line x1="39.5" y1="20" x2="42" y2="20" />
-            <line x1="21.5" y1="11.5" x2="23.3" y2="13.3" />
-            <line x1="36.7" y1="26.7" x2="38.5" y2="28.5" />
-            <line x1="21.5" y1="28.5" x2="23.3" y2="26.7" />
-            <line x1="36.7" y1="13.3" x2="38.5" y2="11.5" />
+    <!-- Track background labels (always visible, fade based on mode) -->
+    <div class="toggle-track-labels">
+      <!-- Moon icon (left = dark side) -->
+      <div class="toggle-track-moon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" />
+        </svg>
+      </div>
+      <!-- Sun icon (right = light side) -->
+      <div class="toggle-track-sun">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="12" y1="2" x2="12" y2="5"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+            <line x1="2" y1="12" x2="5" y2="12"/>
+            <line x1="19" y1="12" x2="22" y2="12"/>
+            <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+            <line x1="17" y1="17" x2="19.1" y2="19.1"/>
+            <line x1="4.9" y1="19.1" x2="7" y2="17"/>
+            <line x1="17" y1="7" x2="19.1" y2="4.9"/>
           </g>
-        </g>
-      </g>
+        </svg>
+      </div>
+    </div>
 
-      <!-- MOUNTAINS (Black, White & Neutral Grays) -->
-      <!-- Back Mountain -->
-      <path class="mountain-fg mountain-back" d="M11 48L24 31L37 48H11Z" fill="#333333" />
-      <polygon points="24,31 21.5,35 24,34 26.5,35" fill="#ffffff" opacity="0.4" />
-
-      <!-- Front Mountain -->
-      <path class="mountain-fg mountain-front" d="M22 52L38 27L53 52H22Z" fill="#171717" />
-      <polygon points="38,27 34,34 38,32 41,34" fill="#ffffff" opacity="0.6" />
-
-      <!-- Base Ground -->
-      <rect x="0" y="48" width="60" height="12" fill="#000000" class="mountain-fg mountain-base" />
-    </svg>
+    <!-- Sliding knob -->
+    <div class="toggle-knob">
+      <div class="toggle-knob-icon">
+        <!-- Moon inside knob -->
+        <div class="knob-moon" style="color:#ffffff">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+          </svg>
+        </div>
+        <!-- Sun inside knob -->
+        <div class="knob-sun" style="color:#1a1a1a">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="4" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+              <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+              <line x1="17" y1="17" x2="19.1" y2="19.1"/>
+              <line x1="4.9" y1="19.1" x2="7" y2="17"/>
+              <line x1="17" y1="7" x2="19.1" y2="4.9"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
   </button>
 
   <!-- Lightbox Modal -->
@@ -1454,10 +1636,18 @@
 
     <!-- Content Card -->
     <div id="lightbox-img-wrapper" class="relative max-w-[calc(100vw-7rem)] md:max-w-[calc(100vw-11rem)] max-h-full flex flex-col items-center scale-95 opacity-0 select-none">
-      <img id="lightbox-img" 
-           src="" 
-           alt="Portfolio Großansicht" 
-           class="max-w-full max-h-[78vh] object-contain rounded-lg shadow-2xl border border-white/10">
+      <!-- Page-peel stage: shrink-wraps to front image so % positioning is correct -->
+      <div id="lightbox-flip-stage">
+        <!-- New page revealed beneath the current one during flip -->
+        <img id="flip-back-img" src="" alt="">
+        <!-- Current page (front) — gets clip-path animation -->
+        <img id="lightbox-img"
+             src=""
+             alt="Portfolio Großansicht"
+             class="max-w-full max-h-[78vh] object-contain rounded-lg shadow-2xl border border-white/10">
+        <!-- Fold-shadow crease that tracks the peel edge -->
+        <div id="flip-fold-edge"></div>
+      </div>
       
       <!-- EXIF / Info Bar in Lightbox -->
       <div class="mt-3.5 flex flex-wrap items-center justify-between w-full px-2 text-xs text-zinc-400 tracking-wider gap-2">
@@ -1741,9 +1931,16 @@
         if (filterValue === 'home') {
           galleryContainer.classList.remove('category-grid');
           galleryContainer.classList.add('home-grid');
+          galleryContainer.style.removeProperty('--cat-cols');
         } else {
           galleryContainer.classList.remove('home-grid');
           galleryContainer.classList.add('category-grid');
+          // Count items that will be visible for this filter
+          const visibleCount = galleryItems.filter(i => i.getAttribute('data-category') === filterValue).length;
+          // Cap columns so the right side is never left empty:
+          // ≤2 items → 1 col; ≤4 → 2 cols; ≤6 → 3 cols; else → 4 cols (default breakpoint max)
+          const maxCols = visibleCount <= 2 ? 1 : visibleCount <= 4 ? 2 : visibleCount <= 6 ? 3 : 4;
+          galleryContainer.style.setProperty('--cat-cols', maxCols);
         }
 
         // Update active button state styles
@@ -1850,14 +2047,57 @@
       });
 
       // ----------------------------------------------------
+      // Page-peel animation: clip the current page away while revealing the next
+      // ----------------------------------------------------
+      const flipBackImg  = document.getElementById('flip-back-img');
+      const flipFoldEdge = document.getElementById('flip-fold-edge');
+
+      function runPageFlip(direction, newSrc, callback) {
+        // Graceful fallback if elements missing
+        if (!flipBackImg || !flipFoldEdge) {
+          lightboxImg.src = newSrc;
+          if (callback) callback();
+          return;
+        }
+
+        const exitClass = direction === 'forward' ? 'flip-exit-fwd' : 'flip-exit-bwd';
+        const edgeClass = direction === 'forward' ? 'edge-fwd'      : 'edge-bwd';
+
+        // Put the new page behind, invisible but ready
+        flipBackImg.src = newSrc;
+
+        // Kick off the peel + shadow-crease animations together
+        lightboxImg.classList.add(exitClass);
+        flipFoldEdge.classList.add(edgeClass);
+
+        lightboxImg.addEventListener('animationend', function onDone() {
+          // Swap front image to the new page, reset animation state
+          lightboxImg.src = newSrc;
+          lightboxImg.classList.remove(exitClass);
+          flipFoldEdge.classList.remove(edgeClass);
+          flipBackImg.src = '';
+          if (callback) callback();
+        }, { once: true });
+      }
+
       // Lightbox Operations (Showing EXIF: ISO, Shutter, Aperture & Multi-page PDFs)
       // ----------------------------------------------------
-      function updateLightboxPage(pageIdx) {
+      function updateLightboxPage(pageIdx, direction) {
         if (!currentItemPages.length) return;
+        const prevIdx = currentPageIndex;
         currentPageIndex = (pageIdx + currentItemPages.length) % currentItemPages.length;
-        lightboxImg.src = currentItemPages[currentPageIndex];
+        const newSrc = currentItemPages[currentPageIndex];
+        const flipDir = direction || (currentPageIndex > prevIdx ? 'forward' : 'backward');
+
         if (lightboxPageIndicator) {
           lightboxPageIndicator.textContent = i18n[currentLang].pageIndicator(currentPageIndex + 1, currentItemPages.length);
+        }
+
+        // Only animate multi-page documents; single photos just swap
+        if (currentItemPages.length > 1) {
+          runPageFlip(flipDir, newSrc, null);
+        } else {
+          lightboxImg.src = newSrc;
         }
       }
 
@@ -1946,11 +2186,11 @@
       function showPrevImage() {
         // If current item has multiple pages, page back first or switch item
         if (currentItemPages.length > 1 && currentPageIndex > 0) {
-          updateLightboxPage(currentPageIndex - 1);
+          updateLightboxPage(currentPageIndex - 1, 'backward');
         } else {
           updateLightboxContent(currentLightboxIndex - 1);
           if (currentItemPages.length > 1) {
-            updateLightboxPage(currentItemPages.length - 1);
+            updateLightboxPage(currentItemPages.length - 1, 'backward');
           }
         }
       }
@@ -1958,7 +2198,7 @@
       function showNextImage() {
         // If current item has multiple pages, page forward first or switch item
         if (currentItemPages.length > 1 && currentPageIndex < currentItemPages.length - 1) {
-          updateLightboxPage(currentPageIndex + 1);
+          updateLightboxPage(currentPageIndex + 1, 'forward');
         } else {
           updateLightboxContent(currentLightboxIndex + 1);
         }
@@ -1968,13 +2208,13 @@
       if (lightboxPagePrev) {
         lightboxPagePrev.addEventListener('click', (e) => {
           e.stopPropagation();
-          updateLightboxPage(currentPageIndex - 1);
+          updateLightboxPage(currentPageIndex - 1, 'backward');
         });
       }
       if (lightboxPageNext) {
         lightboxPageNext.addEventListener('click', (e) => {
           e.stopPropagation();
-          updateLightboxPage(currentPageIndex + 1);
+          updateLightboxPage(currentPageIndex + 1, 'forward');
         });
       }
 
