@@ -1650,24 +1650,30 @@
       </div>
       
       <!-- EXIF / Info Bar in Lightbox -->
-      <div class="mt-3.5 flex flex-wrap items-center justify-between w-full px-2 text-xs text-zinc-400 tracking-wider gap-2">
-        <div class="flex items-center space-x-3">
-          <span id="lightbox-category" class="text-zinc-500 uppercase font-semibold text-[10px] tracking-widest border border-white/15 px-2 py-0.5 rounded"></span>
-          <span id="lightbox-exif" class="font-mono text-zinc-200"></span>
-        </div>
-        <!-- Multi-page PDF pager controls -->
-        <div id="lightbox-page-controls" class="hidden items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-          <button id="lightbox-page-prev" type="button" class="p-1 hover:text-white transition-colors focus:outline-none" title="Vorherige Seite">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-          </button>
-          <span id="lightbox-page-indicator" class="font-mono text-[11px] text-zinc-200 px-1">Seite 1 / 1</span>
-          <button id="lightbox-page-next" type="button" class="p-1 hover:text-white transition-colors focus:outline-none" title="Nächste Seite">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-          </button>
-          <a id="lightbox-pdf-link" href="#" target="_blank" rel="noopener noreferrer" class="ml-2 pl-2 border-l border-white/20 text-xs text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1" title="Original-PDF öffnen">
-            <span>PDF</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-          </a>
+      <div class="mt-3 w-full">
+        <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-lg bg-black/70 backdrop-blur-md border border-white/[0.08]">
+          <!-- Left: category badge + EXIF -->
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span id="lightbox-category" class="shrink-0 text-white/50 uppercase font-semibold text-[9px] tracking-widest border border-white/20 px-2 py-0.5 rounded"></span>
+            <span id="lightbox-exif" class="font-mono text-xs text-white/85 tracking-wide truncate"></span>
+          </div>
+          <!-- Right: multi-page PDF pager controls -->
+          <div id="lightbox-page-controls" class="hidden items-center gap-1">
+            <button id="lightbox-page-prev" type="button" class="p-1.5 text-white/60 hover:text-white transition-colors focus:outline-none rounded" title="Vorherige Seite">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <span id="lightbox-page-indicator" class="font-mono text-[11px] text-white/80 px-1 tabular-nums">Seite 1 / 1</span>
+            <button id="lightbox-page-next" type="button" class="p-1.5 text-white/60 hover:text-white transition-colors focus:outline-none rounded" title="Nächste Seite">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <!-- Divider + PDF link (no blue — zinc/white only) -->
+            <a id="lightbox-pdf-link" href="#" target="_blank" rel="noopener noreferrer"
+               class="ml-1 pl-2.5 border-l border-white/15 text-[11px] font-medium text-white/55 hover:text-white/90 transition-colors inline-flex items-center gap-1 tracking-widest uppercase"
+               title="Original-PDF öffnen">
+              <span>PDF</span>
+              <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
