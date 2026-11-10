@@ -264,7 +264,46 @@
       opacity: 1;
     }
 
+    /* Lightbox Info Bar styling */
+    .lightbox-info-bar {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .lightbox-info-bar #lightbox-category {
+      color: #171717;
+      border-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    .lightbox-info-bar #lightbox-exif {
+      color: #171717;
+    }
+    .lightbox-info-bar #lightbox-page-indicator {
+      color: #262626;
+    }
+    .lightbox-info-bar #lightbox-page-prev,
+    .lightbox-info-bar #lightbox-page-next {
+      color: #525252;
+    }
+    .lightbox-info-bar #lightbox-page-prev:hover,
+    .lightbox-info-bar #lightbox-page-next:hover {
+      color: #000000;
+    }
+    .lightbox-info-bar #lightbox-pdf-link {
+      color: #525252;
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+    .lightbox-info-bar #lightbox-pdf-link:hover {
+      color: #000000;
+    }
+
     /* Light Mode Overrides */
+    body.light-mode .lightbox-info-bar {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
     body.light-mode {
       background-color: #ffffff;
       color: #000000;
@@ -703,27 +742,27 @@
         <button type="button" 
                 data-filter="animals" 
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
-          Animals
+          Tiere
         </button>
         <button type="button" 
                 data-filter="aviation" 
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
-          Aviation
+          Aviatik
         </button>
         <button type="button" 
                 data-filter="environments" 
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
-          Environments
+          Umgebungen
         </button>
         <button type="button" 
                 data-filter="food" 
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
-          Food
+          Essen
         </button>
         <button type="button" 
                 data-filter="design" 
                 class="filter-btn px-4 py-1.5 sm:px-5 sm:py-2 text-xs uppercase tracking-widest rounded-full transition-all duration-200 border border-white/10 text-zinc-400 hover:text-white hover:border-white/25 hover:bg-white/[0.04]">
-          Design
+          Gestaltung
         </button>
 
         <!-- Divider -->
@@ -768,7 +807,7 @@
                alt="Animals - DSC02057" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/800s</span><span>·</span><span>ƒ/5.6</span><span>·</span><span>ISO 100</span>
           </div>
@@ -784,7 +823,7 @@
                alt="Animals - DSC02284" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/320s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 100</span>
           </div>
@@ -800,7 +839,7 @@
                alt="Animals - DSC02441" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/500s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 800</span>
           </div>
@@ -819,11 +858,11 @@
         </div>
         <!-- Centered Home Title Overlay (Balken-Fix durch optimierten Verlauf) -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
-          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Animals</span>
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Tiere</span>
           <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/400s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 1600</span>
           </div>
@@ -839,7 +878,7 @@
                alt="Animals - DSC02653" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/800s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 800</span>
           </div>
@@ -855,7 +894,7 @@
                alt="Animals - DSC03043" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1000s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 640</span>
           </div>
@@ -871,7 +910,7 @@
                alt="Animals - DSC03157" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1000s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 400</span>
           </div>
@@ -887,7 +926,7 @@
                alt="Animals - unbenannt-21" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1600s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 12800</span>
           </div>
@@ -903,7 +942,7 @@
                alt="Animals - unbenannt-62-2" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Animals</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Tiere</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/250s</span><span>·</span><span>ƒ/5.6</span><span>·</span><span>ISO 100</span>
           </div>
@@ -923,11 +962,11 @@
         </div>
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
-          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Aviation</span>
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Aviatik</span>
           <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2500s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 250</span>
           </div>
@@ -943,7 +982,7 @@
                alt="Aviation - F35--2" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
             <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
@@ -959,7 +998,7 @@
                alt="Aviation - F35--4" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
             <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
@@ -975,7 +1014,7 @@
                alt="Aviation - unbenannt-1990" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/3200s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 640</span>
           </div>
@@ -991,7 +1030,7 @@
                alt="Aviation - unbenannt-224" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2500s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 400</span>
           </div>
@@ -1007,7 +1046,7 @@
                alt="Aviation - unbenannt-2306" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/3200s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 400</span>
           </div>
@@ -1023,7 +1062,7 @@
                alt="Aviation - unbenannt-2363" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/100s</span><span>·</span><span>ƒ/18</span><span>·</span><span>ISO 100</span>
           </div>
@@ -1039,7 +1078,7 @@
                alt="Aviation - unbenannt-374" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/3200s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 640</span>
           </div>
@@ -1055,7 +1094,7 @@
                alt="Aviation - unbenannt-578" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2500s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 1000</span>
           </div>
@@ -1071,7 +1110,7 @@
                alt="Aviation - unbenannt-996" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviation</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Aviatik</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2500s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 250</span>
           </div>
@@ -1091,11 +1130,11 @@
         </div>
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
-          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Environments</span>
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Umgebungen</span>
           <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/3200s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 100</span>
           </div>
@@ -1111,7 +1150,7 @@
                alt="Environments - DSC03346" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/3200s</span><span>·</span><span>ƒ/6.3</span><span>·</span><span>ISO 100</span>
           </div>
@@ -1127,7 +1166,7 @@
                alt="Environments - IMG-20261021" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-400 tracking-wide mt-1 flex items-center space-x-2">
             <span class="meta-unavailable">Keine Metadaten verfügbar</span>
           </div>
@@ -1143,7 +1182,7 @@
                alt="Environments - unbenannt-216" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1600s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 320</span>
           </div>
@@ -1159,7 +1198,7 @@
                alt="Environments - unbenannt-261" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1600s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 250</span>
           </div>
@@ -1175,7 +1214,7 @@
                alt="Environments - unbenannt-265" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1600s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 1600</span>
           </div>
@@ -1191,7 +1230,7 @@
                alt="Environments - unbenannt-335" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/100s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 12800</span>
           </div>
@@ -1207,7 +1246,7 @@
                alt="Environments - unbenannt-416" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2000s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 400</span>
           </div>
@@ -1223,7 +1262,7 @@
                alt="Environments - unbenannt-421" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2000s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 100</span>
           </div>
@@ -1239,7 +1278,7 @@
                alt="Environments - unbenannt-457" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Environments</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Umgebungen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/2000s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 200</span>
           </div>
@@ -1259,11 +1298,11 @@
         </div>
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
-          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Food</span>
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Essen</span>
           <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/250s</span><span>·</span><span>ƒ/4.0</span><span>·</span><span>ISO 3200</span>
           </div>
@@ -1279,7 +1318,7 @@
                alt="Food - DSC00023" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/100s</span><span>·</span><span>ƒ/5.6</span><span>·</span><span>ISO 800</span>
           </div>
@@ -1295,7 +1334,7 @@
                alt="Food - DSC00061" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/100s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 500</span>
           </div>
@@ -1311,7 +1350,7 @@
                alt="Food - DSC00122" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/100s</span><span>·</span><span>ƒ/5.6</span><span>·</span><span>ISO 1250</span>
           </div>
@@ -1327,7 +1366,7 @@
                alt="Food - DSC00150" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/50s</span><span>·</span><span>ƒ/8.0</span><span>·</span><span>ISO 1250</span>
           </div>
@@ -1343,7 +1382,7 @@
                alt="Food - DSC09860" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/50s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 400</span>
           </div>
@@ -1359,7 +1398,7 @@
                alt="Food - DSC09871" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/125s</span><span>·</span><span>ƒ/4.5</span><span>·</span><span>ISO 100</span>
           </div>
@@ -1375,7 +1414,7 @@
                alt="Food - DSC09993" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/1000s</span><span>·</span><span>ƒ/4.5</span>
           </div>
@@ -1391,7 +1430,7 @@
                alt="Food - DSC_0700" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Food</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Essen</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>1/40s</span><span>·</span><span>ƒ/14</span><span>·</span><span>ISO 720</span>
           </div>
@@ -1416,7 +1455,7 @@
         </div>
         <!-- Centered Home Title Overlay -->
         <div class="home-title-overlay absolute inset-x-0 bottom-0 pb-6 pt-16 px-4 flex flex-col items-center justify-end text-center pointer-events-none transition-opacity duration-300">
-          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Design</span>
+          <span class="text-sm sm:text-base tracking-[0.3em] uppercase text-white font-serif font-medium drop-shadow-md">Gestaltung</span>
           <span class="cover-open-gallery text-[9px] tracking-[0.25em] uppercase text-zinc-400 mt-1 opacity-80 group-hover:text-zinc-200">Galerie öffnen &rarr;</span>
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
@@ -1439,7 +1478,7 @@
                alt="Flyer Design M273" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Gestaltung</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>Flyer M273</span>
           </div>
@@ -1458,7 +1497,7 @@
                alt="Imageplakat M274" loading="lazy" class="w-full h-auto object-cover transform transition-transform duration-700 ease-out group-hover:scale-105">
         </div>
         <div class="gallery-hover-overlay hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Design</span>
+          <span class="text-[10px] tracking-widest uppercase text-zinc-400">Gestaltung</span>
           <div class="font-mono text-xs sm:text-sm text-zinc-100 tracking-wide mt-1 flex items-center space-x-2">
             <span>Imageplakat M274</span>
           </div>
@@ -1524,7 +1563,7 @@
           </li>
           <li>
             <span class="detail-label" id="about-galleries-label">Galerien</span>
-            <span class="detail-value">Animals, Aviation, Environments, Food, Design</span>
+            <span class="detail-value" id="about-galleries-value">Tiere, Aviatik, Umgebungen, Essen, Gestaltung</span>
           </li>
           <li>
             <span class="detail-label">Gear</span>
@@ -1687,24 +1726,24 @@
       
       <!-- EXIF / Info Bar in Lightbox -->
       <div class="mt-3 w-full">
-        <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-lg bg-black/70 backdrop-blur-md border border-white/[0.08]">
+        <div class="lightbox-info-bar flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-lg backdrop-blur-md shadow-xl transition-colors duration-300">
           <!-- Left: category badge + EXIF -->
           <div class="flex items-center gap-2.5 min-w-0">
-            <span id="lightbox-category" class="shrink-0 text-white/50 uppercase font-semibold text-[9px] tracking-widest border border-white/20 px-2 py-0.5 rounded"></span>
-            <span id="lightbox-exif" class="font-mono text-xs text-white/85 tracking-wide truncate"></span>
+            <span id="lightbox-category" class="shrink-0 uppercase font-semibold text-[9px] tracking-widest border px-2 py-0.5 rounded transition-colors duration-300"></span>
+            <span id="lightbox-exif" class="font-mono text-xs tracking-wide truncate transition-colors duration-300"></span>
           </div>
           <!-- Right: multi-page PDF pager controls -->
           <div id="lightbox-page-controls" class="hidden items-center gap-1">
-            <button id="lightbox-page-prev" type="button" class="p-1.5 text-white/60 hover:text-white transition-colors focus:outline-none rounded" title="Vorherige Seite">
+            <button id="lightbox-page-prev" type="button" class="p-1.5 transition-colors focus:outline-none rounded" title="Vorherige Seite">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
             </button>
-            <span id="lightbox-page-indicator" class="font-mono text-[11px] text-white/80 px-1 tabular-nums">Seite 1 / 1</span>
-            <button id="lightbox-page-next" type="button" class="p-1.5 text-white/60 hover:text-white transition-colors focus:outline-none rounded" title="Nächste Seite">
+            <span id="lightbox-page-indicator" class="font-mono text-[11px] px-1 tabular-nums">Seite 1 / 1</span>
+            <button id="lightbox-page-next" type="button" class="p-1.5 transition-colors focus:outline-none rounded" title="Nächste Seite">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
             </button>
-            <!-- Divider + PDF link (no blue — zinc/white only) -->
+            <!-- Divider + PDF link -->
             <a id="lightbox-pdf-link" href="#" target="_blank" rel="noopener noreferrer"
-               class="ml-1 pl-2.5 border-l border-white/15 text-[11px] font-medium text-white/55 hover:text-white/90 transition-colors inline-flex items-center gap-1 tracking-widest uppercase"
+               class="ml-1 pl-2.5 border-l text-[11px] font-medium transition-colors inline-flex items-center gap-1 tracking-widest uppercase"
                title="Original-PDF öffnen">
               <span>PDF</span>
               <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -1761,11 +1800,18 @@
           brandTitle: 'Zurück zur Startseite',
           activeCategories: {
             'home': 'Home — Übersicht',
-            'animals': 'Animals Galerie',
-            'aviation': 'Aviation Galerie',
-            'environments': 'Environments Galerie',
-            'food': 'Food Galerie',
-            'design': 'Design Galerie'
+            'animals': 'Tiere Galerie',
+            'aviation': 'Aviatik Galerie',
+            'environments': 'Umgebungen Galerie',
+            'food': 'Essen Galerie',
+            'design': 'Gestaltung Galerie'
+          },
+          categoryLabels: {
+            'animals': 'Tiere',
+            'aviation': 'Aviatik',
+            'environments': 'Umgebungen',
+            'food': 'Essen',
+            'design': 'Gestaltung'
           },
           openGallery: 'Galerie öffnen &rarr;',
           categoriesCount: (n) => `${n} Kategorien`,
@@ -1774,6 +1820,7 @@
           aboutLocationLabel: 'Standort',
           aboutLocationValue: 'Schweiz',
           aboutGalleriesLabel: 'Galerien',
+          aboutGalleriesValue: 'Tiere, Aviatik, Umgebungen, Essen, Gestaltung',
           aboutContactLabel: 'Kontakt',
           noMetadata: 'Keine Metadaten verfügbar',
           pageIndicator: (cur, tot) => `Seite ${cur} / ${tot}`,
@@ -1785,7 +1832,7 @@
           nextImage: 'Nächstes Bild',
           langToggleAria: 'Sprache zu Englisch wechseln',
           langToggleTitle: 'Sprache wechseln (DE / EN)',
-          designPages: (n) => `Design · ${n} Seiten`
+          designPages: (n) => `Gestaltung · ${n} Seiten`
         },
         en: {
           brandTitle: 'Back to Home',
@@ -1797,6 +1844,13 @@
             'food': 'Food Gallery',
             'design': 'Design Gallery'
           },
+          categoryLabels: {
+            'animals': 'Animals',
+            'aviation': 'Aviation',
+            'environments': 'Environments',
+            'food': 'Food',
+            'design': 'Design'
+          },
           openGallery: 'Open gallery &rarr;',
           categoriesCount: (n) => `${n} Categories`,
           photosCount: (n) => `${n} Photos`,
@@ -1804,6 +1858,7 @@
           aboutLocationLabel: 'Location',
           aboutLocationValue: 'Switzerland',
           aboutGalleriesLabel: 'Galleries',
+          aboutGalleriesValue: 'Animals, Aviation, Environments, Food, Design',
           aboutContactLabel: 'Contact',
           noMetadata: 'No metadata available',
           pageIndicator: (cur, tot) => `Page ${cur} / ${tot}`,
@@ -1861,8 +1916,34 @@
         const aboutGalLabel = document.getElementById('about-galleries-label');
         if (aboutGalLabel) aboutGalLabel.textContent = t.aboutGalleriesLabel;
 
+        const aboutGalVal = document.getElementById('about-galleries-value');
+        if (aboutGalVal) aboutGalVal.textContent = t.aboutGalleriesValue;
+
         const aboutContactLabel = document.getElementById('about-contact-label');
         if (aboutContactLabel) aboutContactLabel.textContent = t.aboutContactLabel;
+
+        // Filter navigation buttons
+        filterBtns.forEach(btn => {
+          const cat = btn.getAttribute('data-filter');
+          if (cat && t.categoryLabels[cat]) {
+            btn.textContent = t.categoryLabels[cat];
+          }
+        });
+
+        // Home Cover title overlays & gallery hover tags
+        galleryItems.forEach(item => {
+          const cat = item.getAttribute('data-category');
+          if (cat && t.categoryLabels[cat]) {
+            const homeOverlayTitle = item.querySelector('.home-title-overlay > span:first-child');
+            if (homeOverlayTitle) {
+              homeOverlayTitle.textContent = t.categoryLabels[cat];
+            }
+            const hoverTag = item.querySelector('.gallery-hover-overlay > span:first-child');
+            if (hoverTag && !item.hasAttribute('data-camera-pages')) {
+              hoverTag.textContent = t.categoryLabels[cat];
+            }
+          }
+        });
 
         // Design cards pages count
         document.querySelectorAll('[data-pages-count]').forEach(el => {
@@ -1891,6 +1972,12 @@
 
         // Lightbox live indicators if open
         if (lightbox && lightbox.classList.contains('is-open')) {
+          if (currentFilteredItems[currentLightboxIndex]) {
+            const cat = currentFilteredItems[currentLightboxIndex].getAttribute('data-category');
+            if (cat && t.categoryLabels[cat]) {
+              lightboxCategory.textContent = t.categoryLabels[cat].toUpperCase();
+            }
+          }
           if (currentItemPages.length > 1 && lightboxPageIndicator) {
             lightboxPageIndicator.textContent = t.pageIndicator(currentPageIndex + 1, currentItemPages.length);
           }
@@ -2170,7 +2257,10 @@
         currentPageIndex = 0;
 
         lightboxImg.src = currentItemPages[0];
-        lightboxCategory.textContent = category.toUpperCase();
+        const localizedCat = (i18n[currentLang] && i18n[currentLang].categoryLabels && i18n[currentLang].categoryLabels[category]) 
+          ? i18n[currentLang].categoryLabels[category] 
+          : category;
+        lightboxCategory.textContent = localizedCat.toUpperCase();
 
         const exifSpecs = [];
         if (camera && camera !== '—') exifSpecs.push(camera);
@@ -2181,12 +2271,15 @@
 
         lightboxExif.textContent = exifSpecs.length ? exifSpecs.join('  ·  ') : i18n[currentLang].noMetadata;
 
-        // Multi-page pager visibility
-        if (currentItemPages.length > 1 || pdfPath) {
+        // PDF / Multi-page pager visibility:
+        // Seitenwechsler für "design" / "Gestaltung" ausblenden, nur PDF-Button anzeigen falls vorhanden
+        const showPagePager = currentItemPages.length > 1 && category !== 'design';
+
+        if (showPagePager || pdfPath) {
           lightboxPageControls.classList.remove('hidden');
           lightboxPageControls.classList.add('flex');
           
-          if (currentItemPages.length > 1) {
+          if (showPagePager) {
             lightboxPagePrev.style.display = 'inline-flex';
             lightboxPageNext.style.display = 'inline-flex';
             lightboxPageIndicator.style.display = 'inline-block';
